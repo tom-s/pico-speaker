@@ -43,7 +43,7 @@ var picoConfig = {
    LANGUAGE: 'fr-FR'
 };
 
-// Start clap detection
+// Initialize with config
 picoSpeaker.init(picoConfig);
 
 // Say hello
