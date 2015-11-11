@@ -18,9 +18,9 @@ var speaker = (function() {
         speak: function(text) {
             var deferred = Q.defer();
             if(CONFIG.AUDIO_DEVICE) {
-                var cmd = 'pico2wave -w output.wav " ' + text + '" && aplay -l ' + CONFIG.LANGUAGE + ' -D ' + CONFIG.AUDIO_DEVICE + ' output.wav';
+                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w output.wav " ' + text + '" && aplay -D ' + CONFIG.AUDIO_DEVICE + ' output.wav';
             } else {
-                var cmd = 'pico2wave -w output.wav " ' + text + '" && aplay -l ' + CONFIG.LANGUAGE + ' output.wav';
+                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w output.wav " ' + text + '" && aplay output.wav';
             }
             exec(cmd, function(error) {
                 // command output is in stdout
