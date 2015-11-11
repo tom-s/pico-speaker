@@ -1,0 +1,31 @@
+{
+  "name": "pico-speaker",
+  "version": "0.0.1",
+  "description": "Pico speaker for node js (linux systems)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom-s/pico-speaker.git"
+  },
+  "keywords": [
+    "pico2wave",
+    "node",
+    "tts",
+    "speak",
+    "raspberry",
+    "raspbian"
+  ],
+  "author": "tom-s",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tom-s/pico-speaker/issues"
+  },
+  "homepage": "https://github.com/tom-s/pico-speaker#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
+  }
+}
