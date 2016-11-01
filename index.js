@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var exec = require('child_process').exec;
+var crypto = require('crypto');
 var Q = require('q');
 
 var speaker = (function() {
@@ -17,10 +18,14 @@ var speaker = (function() {
         },
         speak: function(text) {
             var deferred = Q.defer();
+
+            var md5 = crypto.createHash('md5');
+            var fileName = '/tmp/' + md5.update(text).digest('hex') + '.wav';
+
             if(CONFIG.AUDIO_DEVICE) {
-                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w output.wav " ' + text + '" && aplay -D ' + CONFIG.AUDIO_DEVICE + ' output.wav';
+                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w ' + fileName + ' " ' + text + '" && aplay -D ' + CONFIG.AUDIO_DEVICE + ' ' + fileName;
             } else {
-                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w output.wav " ' + text + '" && aplay output.wav';
+                var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w ' + fileName + ' " ' + text + '" && aplay ' + fileName;
             }
             exec(cmd, function(error) {
                 // command output is in stdout
