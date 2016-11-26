@@ -1,6 +1,6 @@
 {
   "name": "pico-speaker",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Pico speaker for node js (linux systems)",
   "main": "index.js",
   "scripts": {
