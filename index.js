@@ -7,7 +7,8 @@ var speaker = (function() {
     /* DEFAULT CONFIG */
     var CONFIG = {
         AUDIO_DEVICE: null,
-        LANGUAGE: 'en-US'
+        LANGUAGE: 'en-US',
+        NAME: null
     };
     var lastText = '';
     return {
@@ -18,9 +19,13 @@ var speaker = (function() {
         },
         speak: function(text) {
             var deferred = Q.defer();
-
-            var md5 = crypto.createHash('md5');
-            var fileName = '/tmp/' + md5.update(text).digest('hex') + '.wav';
+            
+            if(CONFIG.NAME){
+                var fileName = CONFIG.NAME + '.wav';
+            }else{
+                var md5 = crypto.createHash('md5');
+                var fileName = '/tmp/' + md5.update(text).digest('hex') + '.wav'; 
+            }
 
             if(CONFIG.AUDIO_DEVICE) {
                 var cmd = 'pico2wave -l ' + CONFIG.LANGUAGE + ' -w ' + fileName + ' " ' + text + '" && aplay -D ' + CONFIG.AUDIO_DEVICE + ' ' + fileName;
