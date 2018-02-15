@@ -25,7 +25,7 @@ npm install --save pico-speaker
 
 There are four public methods you can use:
 - picoSpeaker.init(picoConfig);
-=> this needs to be called to initialize clap detection. The picoConfig object is not mandatory but you can use it to overwrite the default configuration (see next section)
+=> this needs to be called to initialize the speaker. The picoConfig object is not mandatory but you can use it to overwrite the default configuration (see next section)
 - picoSpeaker.speak(text)
 => read text and returns a promise that is resolved when the sentenced is finished
 - picoSpeaker.repeat()
